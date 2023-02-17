@@ -1,0 +1,73 @@
+{% load static %}
+
+<html>
+<head>
+	<title>MoodMusics - Audio Player</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'main2.css' %}" media="screen">
+</head>
+<body>
+	<div id="container">
+		<div id="audio-image">
+			<img class="cover" />
+		</div>
+
+		<div id="audio-player">
+			<div id="audio-info">
+				<span class="movie"></span> - <span class="title"></span>
+			</div>
+			<div id="vol_controls">
+				<img id="volume_button"></img>
+				<input id="volume" type="range" min="0" max="10" value="10" />
+			</div>
+			<div id="buttons">
+				<span>
+					<button id="prev"></button>
+					<button id="play"></button>
+					<button id="pause"></button>
+					<button id="stop"></button>
+					<button id="next"></button>
+				</span>
+			</div>
+			<div class="clearfix"></div>
+			<div id="tracker">
+				<div class="progress">
+    				<div class="progress-bar progress-bar-striped" style="width:0%;"></div>
+  				</div>
+				<span id="duration"></span>
+			</div>
+			<div class="clearfix"></div>
+			<ul id="playlist" class="hidden">
+				{% for song in mood_songs %}
+					<li song_url = "{{ song.song_url }}" cover = "{{ song.cover }}" movie = "{{ song.movie }}"> {{ song.label }} </li>
+				{% endfor %}
+
+			</ul>
+		</div>
+		<div id="detected_mood">
+			<span>
+				Mood : {{ my_mood }}
+			</span>
+		</div>
+
+	</div>
+	<div id="center_div">
+		<!-- <div class="wrapper">
+			<a target="_blank" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=jainakash720@gmail.com&shva=1"><i class="fa fa-3x fa-google"></i></a>
+			<a target="_blank" href="https://www.facebook.com/akash720"><i class="fa fa-3x fa-facebook-square"></i></a>
+			<a target="_blank" href="https://github.com/akash720/"><i class="fa fa-3x fa-github-square"></i></a>
+			<a target="_blank" href="https://www.linkedin.com/in/akash-jain-248b55137/"><i class="fa fa-3x fa-linkedin-square"></i>
+			</div></a>
+		</div> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="{% static 'main2.js' %}"></script>
+	</body>
+	</html>
